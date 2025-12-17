@@ -1,0 +1,93 @@
+Référence;Semaine;Client;Besoin;Dispo_TIS;PDP;DISPO_IDL;SS;LeadTime_Semaine;CA_unitaire;Stock_calc_IDL;Commentaire
+ARE2071469A02LF;WK50;SCH MIC-C264;50;0.0;30.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+ARE2071469A02LF;WK51;SCH MIC-C264;50;0.0;0.0;0.0;100;1;0.0;-50;⛔ Arrêt client : produire davantage
+ARE2071469A03LF;WK50;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+ARE2071613A01LF;WK50;SCH MIC-C264;130;60.0;90.0;0.0;100;1;0.0;-40;⛔ Arrêt client : produire davantage
+ARE2071613A01LF;WK51;SCH MIC-C264;10;0.0;0.0;0.0;100;1;0.0;-10;⛔ Arrêt client : produire davantage
+ARE2071613A01LF;WK52;SCH MIC-C264;30;0.0;0.0;0.0;100;1;0.0;-30;⛔ Arrêt client : produire davantage
+SEL2071603A01LF;WK50;SCH MIC-C264;120;0.0;120.0;0.0;100;1;0.0;0;⚠️ Rupture : lancer 100 pcs pour couvrir SS
+SEL2071603A01LF;WK51;SCH MIC-C264;24;0.0;0.0;0.0;100;1;0.0;-24;⛔ Arrêt client : produire davantage
+SEL2071603A01LF;WK52;SCH MIC-C264;24;0.0;0.0;0.0;100;1;0.0;-24;⛔ Arrêt client : produire davantage
+SEL2071669LF;WK51;SCH MIC-C264;110;0.0;0.0;0.0;100;1;0.0;-110;⛔ Arrêt client : produire davantage
+SEL2071669LF;WK52;SCH MIC-C264;80;0.0;0.0;0.0;100;1;0.0;-80;⛔ Arrêt client : produire davantage
+SEL2071730A01LF;WK50;SCH MIC-C264;80;160.0;500.0;0.0;100;1;0.0;420;✅ OK
+SEL2071730A01LF;WK51;SCH MIC-C264;140;0.0;0.0;0.0;100;1;0.0;280;✅ OK
+SEL2071730A01LF;WK52;SCH MIC-C264;100;0.0;0.0;0.0;100;1;0.0;180;✅ OK
+SEL2071732LF;WK51;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SEL2071860A01LF;WK50;SCH MIC-C264;10;0.0;0.0;0.0;100;1;0.0;-10;⛔ Arrêt client : produire davantage
+SEL2071860A02LF;WK50;SCH MIC-C264;80;50.0;60.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SEL2071860A02LF;WK51;SCH MIC-C264;70;0.0;0.0;0.0;100;1;0.0;-70;⛔ Arrêt client : produire davantage
+SEL2071860A04LF;WK50;SCH MIC-C264;10;0.0;0.0;0.0;100;1;0.0;-10;⛔ Arrêt client : produire davantage
+SEL2071864A02LF;WK50;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SEL2071864A03LF;WK50;SCH MIC-C264;130;0.0;90.0;0.0;100;1;0.0;-40;⛔ Arrêt client : produire davantage
+SEL2071937A01LF;WK51;SCH MIC-C264;30;0.0;0.0;0.0;100;1;0.0;-30;⛔ Arrêt client : produire davantage
+SEL2071937A01LF;WK52;SCH MIC-C264;30;0.0;0.0;0.0;100;1;0.0;-30;⛔ Arrêt client : produire davantage
+SEL2071941LF;WK50;SCH MIC-C264;24;0.0;60.0;0.0;100;1;0.0;36;⚠️ Rupture : lancer 64 pcs pour couvrir SS
+SEL2071941LF;WK51;SCH MIC-C264;32;0.0;0.0;0.0;100;1;0.0;4;⚠️ Rupture : lancer 96 pcs pour couvrir SS
+SEL2071941LF;WK52;SCH MIC-C264;16;0.0;0.0;0.0;100;1;0.0;-12;⛔ Arrêt client : produire davantage
+SEL2071960A21LF;WK52;SCH MIC-PX40;220;0.0;0.0;0.0;200;2;0.0;-220;⛔ Arrêt client : produire davantage
+SEL2071960A22LF;WK50;SCH MIC-PX40;370;0.0;500.0;0.0;200;2;0.0;-231;⛔ Arrêt client : produire davantage
+SEL2071960A22LF;WK52;SCH MIC-PX40;361;0.0;0.0;0.0;200;2;0.0;-361;⛔ Arrêt client : produire davantage
+SEL2071960A23LF;WK50;SCH MIC-PX40;50;0.0;60.0;0.0;200;2;0.0;10;⚠️ Rupture : lancer 190 pcs pour couvrir SS
+SEL2071960A25LF;WK50;SCH MIC-PX40;40;0.0;80.0;0.0;200;2;0.0;40;⚠️ Rupture : lancer 160 pcs pour couvrir SS
+SEL2071962A01LF;WK52;SCH MIC-PX40;406;0.0;0.0;0.0;100;2;0.0;-406;⛔ Arrêt client : produire davantage
+SEL2071964A02LF;WK52;SCH MIC-PX40;50;0.0;0.0;0.0;100;2;0.0;-50;⛔ Arrêt client : produire davantage
+SEL2071964A03LF;WK50;SCH MIC-PX40;360;100.0;600.0;1070.0;100;2;0.0;1000;✅ OK
+SEL2071964A03LF;WK51;SCH MIC-PX40;310;0.0;0.0;0.0;100;2;0.0;290;✅ OK
+SEL2071964A03LF;WK52;SCH MIC-PX40;400;0.0;0.0;0.0;100;2;0.0;-110;⛔ Arrêt client : produire davantage
+SEL2072033A01LF;WK50;SCH MIC-PX40;496;128.0;328.0;0.0;100;2;0.0;-168;⛔ Arrêt client : produire davantage
+SEL2072034A01LF;WK50;SCH MIC-PX40;104;0.0;0.0;0.0;100;2;0.0;-104;⛔ Arrêt client : produire davantage
+SEL2072035A01LF;WK50;SCH MIC-PX40;16;0.0;0.0;40.0;100;2;0.0;24;⚠️ Rupture : lancer 76 pcs pour couvrir SS
+SEL2072036A01LF;WK50;SCH MIC-PX40;8;0.0;48.0;0.0;100;2;0.0;16;⚠️ Rupture : lancer 84 pcs pour couvrir SS
+SEL2072036A01LF;WK51;SCH MIC-PX40;24;0.0;0.0;0.0;100;2;0.0;-8;⛔ Arrêt client : produire davantage
+SEL2072114A01LF;WK52;SCH MIC-PX40;30;0.0;0.0;0.0;100;2;0.0;-30;⛔ Arrêt client : produire davantage
+SEL2072141A01LF;WK50;SCH MIC-C264;20;0.0;20.0;0.0;100;1;0.0;0;⚠️ Rupture : lancer 100 pcs pour couvrir SS
+SEL2072174A01LF;WK50;SCH MIC-PX40;32;13.0;88.0;4.0;100;2;0.0;32;⚠️ Rupture : lancer 68 pcs pour couvrir SS
+SEL2072174A01LF;WK51;SCH MIC-PX40;28;0.0;0.0;0.0;100;2;0.0;4;⚠️ Rupture : lancer 96 pcs pour couvrir SS
+SEL336187LF;WK50;SCH MIC-PX30;300;260.0;500.0;0.0;100;2;0.0;20;⚠️ Rupture : lancer 80 pcs pour couvrir SS
+SEL336187LF;WK52;SCH MIC-PX30;180;0.0;0.0;0.0;100;2;0.0;-160;⛔ Arrêt client : produire davantage
+SEL336421LF;WK52;SCH MIC-PX30;210;0.0;0.0;0.0;100;2;0.0;-210;⛔ Arrêt client : produire davantage
+SEL337870LF;WK52;SCH MIC-PX30;30;0.0;0.0;0.0;100;2;0.0;-30;⛔ Arrêt client : produire davantage
+SEL45196503A02LF;WK50;SCH MIC-C264;80;0.0;0.0;0.0;100;1;0.0;-80;⛔ Arrêt client : produire davantage
+SEL45196503A02LF;WK52;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SEL45196503A03LF;WK50;SCH MIC-C264;720;0.0;160.0;0.0;100;1;0.0;-560;⛔ Arrêt client : produire davantage
+SEL45196503A03LF;WK51;SCH MIC-C264;120;0.0;0.0;0.0;100;1;0.0;-120;⛔ Arrêt client : produire davantage
+SEL45196503A03LF;WK52;SCH MIC-C264;120;0.0;0.0;0.0;100;1;0.0;-120;⛔ Arrêt client : produire davantage
+SEL45196503A04LF;WK50;SCH MIC-C264;160;0.0;0.0;0.0;100;1;0.0;-160;⛔ Arrêt client : produire davantage
+SEL9651491LF;WK50;SCH MIC-PX30;30;0.0;60.0;0.0;100;2;0.0;30;⚠️ Rupture : lancer 70 pcs pour couvrir SS
+SEL9651520LF;WK50;SCH MIC-PX30;30;0.0;0.0;0.0;100;2;0.0;-30;⛔ Arrêt client : produire davantage
+SEL9651539LF;WK50;SCH MIC-PX30;18;0.0;0.0;0.0;100;2;0.0;-18;⛔ Arrêt client : produire davantage
+SEL9651544LF;WK52;SCH MIC-PX30;54;0.0;0.0;0.0;100;2;0.0;-54;⛔ Arrêt client : produire davantage
+SEL9651569LF;WK50;SCH MIC-PX30;68;0.0;0.0;0.0;100;2;0.0;-108;⛔ Arrêt client : produire davantage
+SEL9651569LF;WK52;SCH MIC-PX30;40;0.0;0.0;0.0;100;2;0.0;-40;⛔ Arrêt client : produire davantage
+SEL9652182LF;WK52;SCH MIC-PX30;36;0.0;0.0;0.0;100;2;0.0;-36;⛔ Arrêt client : produire davantage
+SELE2070879A01LF;WK50;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SELE2070879A02LF;WK50;SCH MIC-C264;80;0.0;80.0;0.0;100;1;0.0;0;⚠️ Rupture : lancer 100 pcs pour couvrir SS
+SELE2070879A02LF;WK51;SCH MIC-C264;50;0.0;0.0;0.0;100;1;0.0;-50;⛔ Arrêt client : produire davantage
+SELE2070879A02LF;WK52;SCH MIC-C264;30;0.0;0.0;0.0;100;1;0.0;-30;⛔ Arrêt client : produire davantage
+SELE2070879A03LF;WK50;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SELE2070879A03LF;WK51;SCH MIC-C264;30;0.0;0.0;0.0;100;1;0.0;-30;⛔ Arrêt client : produire davantage
+SELE2070879A03LF;WK52;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SELE2070879A04LF;WK50;SCH MIC-C264;10;0.0;0.0;0.0;100;1;0.0;-10;⛔ Arrêt client : produire davantage
+SELE2070879A04LF;WK52;SCH MIC-C264;20;0.0;0.0;0.0;100;1;0.0;-20;⛔ Arrêt client : produire davantage
+SELGN0014001LF;WK50;SCH MIC-PX40;36;52.0;28.0;0.0;100;2;0.0;-8;⛔ Arrêt client : produire davantage
+SELGN0014002LF;WK51;SCH MIC-PX40;56;0.0;0.0;0.0;100;2;0.0;-116;⛔ Arrêt client : produire davantage
+SELGN0014002LF;WK52;SCH MIC-PX40;60;0.0;0.0;0.0;100;2;0.0;-60;⛔ Arrêt client : produire davantage
+SELGN0014003LF;WK50;SCH MIC-PX40;36;36.0;28.0;56.0;100;2;0.0;48;⚠️ Rupture : lancer 52 pcs pour couvrir SS
+SELGN0014004LF;WK50;SCH MIC-PX40;8;0.0;24.0;0.0;100;2;0.0;16;⚠️ Rupture : lancer 84 pcs pour couvrir SS
+SELGN0014005LF;WK50;SCH MIC-PX40;4;0.0;0.0;0.0;100;2;0.0;-4;⛔ Arrêt client : produire davantage
+SELGN0014006LF;WK50;SCH MIC-PX40;12;0.0;24.0;0.0;100;2;0.0;12;⚠️ Rupture : lancer 88 pcs pour couvrir SS
+SELGN0014007LF;WK50;SCH MIC-PX40;16;32.0;4.0;0.0;100;2;0.0;-12;⛔ Arrêt client : produire davantage
+SELGN0014009LF;WK50;SCH MIC-PX40;16;28.0;0.0;0.0;100;2;0.0;-16;⛔ Arrêt client : produire davantage
+SELGN0014013LF;WK52;SCH MIC-PX40;44;0.0;0.0;0.0;100;2;0.0;-44;⛔ Arrêt client : produire davantage
+SELGN0014018LF;WK50;SCH MIC-PX40;4;0.0;36.0;0.0;100;2;0.0;32;⚠️ Rupture : lancer 68 pcs pour couvrir SS
+SELGN0018002LF;WK50;SCH MIC-PX40;24;40.0;0.0;0.0;100;2;0.0;-24;⛔ Arrêt client : produire davantage
+SELGN0067005LF;WK52;SCH MIC-PX40;12;0.0;0.0;0.0;100;2;0.0;-12;⛔ Arrêt client : produire davantage
+SELNVE10000;WK50;SCH MIC-PX40;10;0.0;0.0;20.0;100;2;0.0;-60;⛔ Arrêt client : produire davantage
+SELNVE10000;WK51;SCH MIC-PX40;70;0.0;0.0;0.0;100;2;0.0;-70;⛔ Arrêt client : produire davantage
+SELNVE10002;WK50;SCH MIC-PX40;60;0.0;0.0;0.0;100;2;0.0;-100;⛔ Arrêt client : produire davantage
+SELNVE10002;WK52;SCH MIC-PX40;40;0.0;0.0;0.0;100;2;0.0;-40;⛔ Arrêt client : produire davantage
+SELNVE32374;WK51;SCH MIC-PX40;20;0.0;0.0;0.0;100;2;0.0;-20;⛔ Arrêt client : produire davantage
+SELZN0125001LF;WK52;SCH MIC-PX40;28;0.0;0.0;0.0;100;2;0.0;-28;⛔ Arrêt client : produire davantage
+SELZN0125002LF;WK50;SCH MIC-PX40;28;0.0;0.0;0.0;100;2;0.0;-28;⛔ Arrêt client : produire davantage
+SELZN0128011LF;WK50;SCH MIC-PX40;50;5.0;130.0;0.0;100;2;0.0;80;⚠️ Rupture : lancer 20 pcs pour couvrir SS
