@@ -17,23 +17,22 @@ if "logged_in" not in st.session_state:
 # =========================
 # AUTHENTIFICATION SIMPLE
 # =========================
-if not st.session_state.logged_in:
+def login():
     st.sidebar.title("🔐 Connexion")
     username = st.sidebar.text_input("Nom d'utilisateur")
     password = st.sidebar.text_input("Mot de passe", type="password")
     if st.sidebar.button("Se connecter"):
         if username == "admin" and password == "motdepasse":
             st.session_state.logged_in = True
-            st.experimental_rerun()  # Recharge la page pour afficher le dashboard
         else:
             st.sidebar.error("❌ Identifiant ou mot de passe incorrect")
 
 # =========================
-# DASHBOARD COMPLET (après login)
+# DASHBOARD
 # =========================
-if st.session_state.logged_in:
+def run_dashboard():
     # =========================
-    # SIDEBAR AVEC IMAGE ET FILTRES
+    # SIDEBAR IMAGE & FILTRES
     # =========================
     st.sidebar.image("Lotfi.png", width=80)
     st.sidebar.title("Filtres")
@@ -76,7 +75,6 @@ if st.session_state.logged_in:
                 if prev_row["Référence"] == ref:
                     stock_arrive = prev_row["PDP"] + prev_row["Dispo_TIS"]
 
-            # Stock IDL avant livraison client
             stock_prev = stock_idl_dict[ref]["last_stock"]
             stock_idl = stock_prev + stock_arrive - besoin
 
@@ -133,7 +131,7 @@ if st.session_state.logged_in:
 
     # =========================
     # GRAPHIQUES
-    # =========================
+    # 1️⃣ Stock restant vs SS
     st.subheader("📊 Stock restant vs SS")
     fig_stock = px.line(df_f, x="Semaine", y="Stock_restant_IDL", color="Référence",
                         markers=True, hover_data=["Besoin","PDP","SS"],
@@ -141,11 +139,13 @@ if st.session_state.logged_in:
     fig_stock.add_hline(y=df_f["SS"].max(), line_dash="dash", line_color="red", annotation_text="SS max", annotation_position="top right")
     st.plotly_chart(fig_stock, use_container_width=True)
 
+    # 2️⃣ Besoin vs Dispo_TIS
     st.subheader("📊 Besoin vs Dispo_TIS")
     fig_besoin = px.line(df_f, x="Semaine", y=["Besoin","Dispo_TIS"], color="Référence", markers=True,
                          title="Besoin client vs Dispo TIS")
     st.plotly_chart(fig_besoin, use_container_width=True)
 
+    # 3️⃣ Alertes Stock
     st.subheader("⚠️ Alertes Stock")
     df_alert = df_f[df_f["Stock_restant_IDL"] < df_f["SS"]].copy()
     fig_alert = px.line(df_alert, x="Semaine", y="Stock_restant_IDL", color="Référence", markers=True,
@@ -153,3 +153,11 @@ if st.session_state.logged_in:
     st.plotly_chart(fig_alert, use_container_width=True)
 
     st.success("🎯 Dashboard prêt : identifiez rapidement où le planning est impacté et quelles ruptures nécessitent action.")
+
+# =========================
+# MAIN LOGIC
+# =========================
+if not st.session_state.logged_in:
+    login()
+else:
+    run_dashboard()
