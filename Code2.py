@@ -22,7 +22,7 @@ def login():
     username = st.sidebar.text_input("Nom d'utilisateur")
     password = st.sidebar.text_input("Mot de passe", type="password")
     if st.sidebar.button("Se connecter"):
-        if username == "admin" and password == "motdepasse":
+        if username == "Lotfi" and password == "Jellali":
             st.session_state.logged_in = True
         else:
             st.sidebar.error("❌ Identifiant ou mot de passe incorrect")
