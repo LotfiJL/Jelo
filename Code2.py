@@ -31,6 +31,7 @@ def login():
 # DASHBOARD
 # =========================
 def run_dashboard():
+
     # =========================
     # SIDEBAR IMAGE & FILTRES
     # =========================
@@ -43,8 +44,10 @@ def run_dashboard():
     df = pd.read_csv("Jelo.csv", sep=";", encoding="latin1")
     df.columns = df.columns.str.strip()
 
-    # Conversion en numérique
-    num_cols = ["Besoin","Dispo_TIS","PDP","DISPO_IDL","Stock_restant_IDL","SS","LeadTime_Semaine","CA_unitaire"]
+    num_cols = [
+        "Besoin","Dispo_TIS","PDP","DISPO_IDL",
+        "Stock_restant_IDL","SS","LeadTime_Semaine","CA_unitaire"
+    ]
     for col in num_cols:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
@@ -52,7 +55,7 @@ def run_dashboard():
     df = df.sort_values(["Référence","Semaine"])
 
     # =========================
-    # CALCUL STOCK_RESTANT_IDL CUMULATIF
+    # CALCUL STOCK_RESTANT_IDL
     # =========================
     def calcul_stock_idl(df):
         df = df.sort_values(["Référence","Semaine"]).copy()
@@ -60,53 +63,58 @@ def run_dashboard():
         for idx, row in df.iterrows():
             ref = row["Référence"]
             besoin = row["Besoin"]
-            dispo_tis = row["Dispo_TIS"]
-            pdp = row["PDP"]
-            lead_client = int(row["LeadTime_Semaine"])
-
             if ref not in stock_idl_dict:
-                stock_idl_dict[ref] = {"last_stock": 0}
+                stock_idl_dict[ref] = 0
 
-            # Stock disponible à l'arrivée cette semaine
             stock_arrive = 0
-            semaine_idx = df.index.get_loc(idx)
-            if semaine_idx > 0:
-                prev_row = df.iloc[semaine_idx - 1]
+            idx_pos = df.index.get_loc(idx)
+            if idx_pos > 0:
+                prev_row = df.iloc[idx_pos - 1]
                 if prev_row["Référence"] == ref:
                     stock_arrive = prev_row["PDP"] + prev_row["Dispo_TIS"]
 
-            stock_prev = stock_idl_dict[ref]["last_stock"]
-            stock_idl = stock_prev + stock_arrive - besoin
-
+            stock_idl = stock_idl_dict[ref] + stock_arrive - besoin
             df.loc[idx, "Stock_restant_IDL"] = stock_idl
-            stock_idl_dict[ref]["last_stock"] = stock_idl
+            stock_idl_dict[ref] = stock_idl
 
         return df
 
     df = calcul_stock_idl(df)
 
     # =========================
-    # COMMENTAIRES ET ALERTES
+    # COMMENTAIRES & STATUT
     # =========================
-    def get_comment(row):
+    def get_status(row):
         if row["Stock_restant_IDL"] < 0:
-            return f"⛔ Arrêt client : produire davantage"
+            return "⛔ Arrêt client"
         elif row["Stock_restant_IDL"] < row["SS"]:
-            besoin_lancer = row["SS"] - row["Stock_restant_IDL"]
-            return f"⚠️ Rupture : lancer {int(besoin_lancer)} pcs pour couvrir SS"
+            return "⚠️ SS non couvert"
         else:
             return "✅ OK"
 
-    df["Commentaire"] = df.apply(get_comment, axis=1)
+    df["Statut"] = df.apply(get_status, axis=1)
 
     # =========================
-    # FILTRES
+    # FILTRES AVEC OPTION "TOUT"
     # =========================
-    ref = st.sidebar.multiselect("Référence", df["Référence"].unique(), default=df["Référence"].unique())
-    client = st.sidebar.multiselect("Client", df["Client"].unique(), default=df["Client"].unique())
-    semaine = st.sidebar.multiselect("Semaine", df["Semaine"].unique(), default=df["Semaine"].unique())
+    def multiselect_with_all(label, options):
+        all_label = "✅ Tout"
+        display_options = [all_label] + list(options)
+        selected = st.sidebar.multiselect(label, display_options, default=display_options)
+        if all_label in selected:
+            return list(options)  # Retourne toutes les options réelles
+        else:
+            return selected
 
-    df_f = df[df["Référence"].isin(ref) & df["Client"].isin(client) & df["Semaine"].isin(semaine)]
+    ref_selected = multiselect_with_all("Référence", df["Référence"].unique())
+    client_selected = multiselect_with_all("Client", df["Client"].unique())
+    semaine_selected = multiselect_with_all("Semaine", df["Semaine"].unique())
+
+    df_f = df[
+        df["Référence"].isin(ref_selected) &
+        df["Client"].isin(client_selected) &
+        df["Semaine"].isin(semaine_selected)
+    ]
 
     # =========================
     # HEADER
@@ -120,42 +128,49 @@ def run_dashboard():
     c1, c2, c3 = st.columns(3)
     c1.metric("Besoin total", int(df_f["Besoin"].sum()))
     c2.metric("Stock restant total", int(df_f["Stock_restant_IDL"].sum()))
-    c3.metric("Ruptures / Alertes", int((df_f["Stock_restant_IDL"] < df_f["SS"]).sum()))
+    c3.metric("Refs en alerte", int((df_f["Statut"] != "✅ OK").sum()))
+
+    # =========================
+    # SYNTHESE ETAT PAR SEMAINE
+    # =========================
+    st.subheader("📊 État des références par semaine")
+    df_etat = (
+        df_f
+        .groupby(["Semaine", "Statut"])
+        .agg(Nb_refs=("Référence", "nunique"))
+        .reset_index()
+        .pivot(index="Semaine", columns="Statut", values="Nb_refs")
+        .fillna(0)
+        .astype(int)
+        .reset_index()
+    )
+    st.dataframe(df_etat, use_container_width=True)
 
     # =========================
     # TABLE DETAILLEE
     # =========================
-    st.subheader("📋 Tableau synthétique Planning & Impact")
-    cols = ["Référence","Semaine","Client","Besoin","Dispo_TIS","PDP","DISPO_IDL","Stock_restant_IDL","SS","Commentaire","LeadTime_Semaine","CA_unitaire"]
+    st.subheader("📋 Détail Planning & Impact")
+    cols = [
+        "Référence","Semaine","Client","Besoin",
+        "Dispo_TIS","PDP","Stock_restant_IDL","SS","Statut"
+    ]
     st.dataframe(df_f[cols].sort_values(["Référence","Semaine"]), use_container_width=True)
 
     # =========================
-    # GRAPHIQUES
-    # 1️⃣ Stock restant vs SS
+    # GRAPHIQUE STOCK
+    # =========================
     st.subheader("📊 Stock restant vs SS")
-    fig_stock = px.line(df_f, x="Semaine", y="Stock_restant_IDL", color="Référence",
-                        markers=True, hover_data=["Besoin","PDP","SS"],
-                        title="Stock restant IDL par semaine")
-    fig_stock.add_hline(y=df_f["SS"].max(), line_dash="dash", line_color="red", annotation_text="SS max", annotation_position="top right")
+    fig_stock = px.line(
+        df_f, x="Semaine", y="Stock_restant_IDL",
+        color="Référence", markers=True
+    )
+    fig_stock.add_hline(y=df_f["SS"].max(), line_dash="dash", line_color="red")
     st.plotly_chart(fig_stock, use_container_width=True)
 
-    # 2️⃣ Besoin vs Dispo_TIS
-    st.subheader("📊 Besoin vs Dispo_TIS")
-    fig_besoin = px.line(df_f, x="Semaine", y=["Besoin","Dispo_TIS"], color="Référence", markers=True,
-                         title="Besoin client vs Dispo TIS")
-    st.plotly_chart(fig_besoin, use_container_width=True)
-
-    # 3️⃣ Alertes Stock
-    st.subheader("⚠️ Alertes Stock")
-    df_alert = df_f[df_f["Stock_restant_IDL"] < df_f["SS"]].copy()
-    fig_alert = px.line(df_alert, x="Semaine", y="Stock_restant_IDL", color="Référence", markers=True,
-                        title="Alertes : Stock inférieur au SS")
-    st.plotly_chart(fig_alert, use_container_width=True)
-
-    st.success("🎯 Dashboard prêt : identifiez rapidement où le planning est impacté et quelles ruptures nécessitent action.")
+    st.success("🎯 Pilotage hebdomadaire clair : OK / SS non couvert / Arrêt client.")
 
 # =========================
-# MAIN LOGIC
+# MAIN
 # =========================
 if not st.session_state.logged_in:
     login()
